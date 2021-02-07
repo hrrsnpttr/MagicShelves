@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/__/firebase/8.2.6/firebase-app.js"></script>
+    <script src="/__/firebase/8.2.6/firebase-auth.js"></script>
+    <script src="/__/firebase/8.2.6/firebase-database.js"></script>
+    <script src="/__/firebase/8.2.6/firebase-firestore.js"></script>
+    <script src="/__/firebase/8.2.6/firebase-storage.js"></script>
+    <script src="/__/firebase/8.2.6/firebase-messaging.js"></script>
+    <script src="/__/firebase/init.js"></script>
+  
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyAMDiQJDJugVbDTjZMiXwTsuGrdbovSwC8",
+        authDomain: "magicshelves.firebaseapp.com",
+        projectId: "magicshelves",
+        storageBucket: "magicshelves.appspot.com",
+        messagingSenderId: "189306885784",
+        appId: "1:189306885784:web:4c5a790a3c08c83d2222ed",
+        measurementId: "G-X0WZXYE05N"
+        };
+        if (!firebase.apps.length) {
+            firebase.initializeApp({});
+        }else {
+            firebase.app(); // if already initialized, use that one
+        }
+    </script>
+  
+    <script type="text/javascript" src="app.js" defer></script>
+
+    <style> /* CSS Stuff */
+        body {
+          font-family: Arial, Helvetica, sans-serif, monospace;
+          margin: 0;
+        }
+        
+        /* Style the header */
+        .header {
+          padding: 5px;
+          text-align: center;
+          /* background: #5e8ccc; */
+          background: #003f91;
+          color: white;
+        }
+        
+        /* Increase the font size of the h1 element */
+        .header h1 {
+          font-size: 60px;
+        }
+
+        /* sub header */
+        p {
+          /* width: 320px; */
+          padding: 10px;
+          /* border: 5px solid gray; */
+          /* background: #9bbeee; */
+          background: #5da9e9;
+          color: white;
+          margin: 0;
+          font-size: 25px;
+          text-align: center;
+
+        }
+
+
+        /* Columns */
+        .column {
+          float: left;
+          width: 25%;
+          background: rgb(255, 255, 255);
+          /* padding: 10px; */
+          height: 125px; /* Should be removed. Only for demonstration */
+        }
+
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+        /* Buttons */
+        .btn {
+          border-radius: 15px;
+          background-color: #5c6b73;
+          color: black;
+          /* padding: 14px 28px; */
+          font-size: 16px;
+          cursor: pointer;
+          width: 90%;
+          height: 85%;
+          margin: 5%;
+          word-wrap: break-word;
+          font-size: 20px;
+        }
+
+        .item {
+          border: 5px;
+          border-color: #5c6b73;
+          color: rgb(255, 255, 255);
+        }
+
+        .item:hover {
+          background-color: #abb3be;
+          color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="header">
+        <h1>MAGIC SHELVES</h1>
+        <!-- <p>We find your stuff because you cant apparently</p> -->
+    </div>
+
+    <p>
+        Press on an item space to add or retrieve your thing!
+    </p>
+
+    <p style="text-align:left; background: #c1cfd7; color: #464646">
+      Shelf #1
+    </p>
+
+    <div class="row" >
+      <div class="column" style="background: #c1cfd7;">
+        <button class="btn item" id="btn11" onclick="row1Btns(1)"> </button>
+        
+      </div>
+      <div class="column" style="background: #c1cfd7;">
+        <button class="btn item" id="btn12" onclick="row1Btns(2)"> </button>
+        
+      </div>
+      <div class="column" style="background: #c1cfd7;">
+        <button class="btn item" id="btn13" onclick="row1Btns(3)"> </button>
+        
+      </div>
+      <div class="column" style="background: #c1cfd7;">
+        <button class="btn item" id="btn14" onclick="row1Btns(4)"> </button>
+        
+      </div>
+    </div>
+
+
+    <p style="text-align:left; background: #dee5e5; color: #464646">
+      Shelf #2
+    </p>
+
+    <div class="row" >
+      <div class="column" style="background: #dee5e5;">
+        <button class="btn item" id="btn21" onclick="row2Btns(1)"> </button>
+        
+      </div>
+      <div class="column" style="background: #dee5e5;">
+        <button class="btn item" id="btn22" onclick="row2Btns(2)"> </button>
+        
+      </div>
+      <div class="column" style="background: #dee5e5;">
+        <button class="btn item" id="btn23" onclick="row2Btns(3)"> </button>
+        
+      </div>
+      <div class="column" style="background: #dee5e5;">
+        <button class="btn item" id="btn24" onclick="row2Btns(4)"> </button>
+        
+      </div>
+    </div>
+
+    <p style="text-align:left; background: #c1cfd7; color: #464646">
+      Shelf #3
+    </p>
+
+    <div class="row" >
+      <div class="column" style="background: #c1cfd7;">
+        <button class="btn item" id="btn31" onclick="row3Btns(1)"> </button>
+        
+      </div>
+      <div class="column" style="background: #c1cfd7;">
+        <button class="btn item" id="btn32" onclick="row3Btns(2)"> </button>
+        
+      </div>
+      <div class="column" style="background: #c1cfd7;">
+        <button class="btn item" id="btn33" onclick="row3Btns(3)"> </button>
+        
+      </div>
+      <div class="column" style="background: #c1cfd7;">
+        <button class="btn item" id="btn34" onclick="row3Btns(4)"> </button>
+        
+      </div>
+    </div>
+    
+    <p style="text-align:left; background: #dee5e5; color: #464646">
+      Shelf #4
+    </p>
+
+    <div class="row" >
+      <div class="column" style="background: #dee5e5;">
+        <button class="btn item" id="btn41" onclick="row4Btns(1)"> </button>
+        
+      </div>
+      <div class="column" style="background: #dee5e5;">
+        <button class="btn item" id="btn42" onclick="row4Btns(2)"> </button>
+        
+      </div>
+      <div class="column" style="background: #dee5e5;">
+        <button class="btn item" id="btn43" onclick="row4Btns(3)"> </button>
+        
+      </div>
+      <div class="column" style="background: #dee5e5;">
+        <button class="btn item" id="btn44" onclick="row4Btns(4)"> </button>
+        
+      </div>
+    </div>
+    
+    <!-- <button onclick="googleLogin()">
+      Login with Google
+    </button> -->
+    
+
+</body>
+</html>
