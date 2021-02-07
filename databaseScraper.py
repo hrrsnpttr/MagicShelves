@@ -7,7 +7,7 @@ cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-aio = Client('harrypotteryeah', 'aio_HLbA77UvpCI2MInVOs6XoB1T0zmc')
+aio = Client('harrypotteryeah', #INSERTKEYHERE)
 espDoc = db.document('toESP32/readThisData')
 
 lastData = str(-1)
